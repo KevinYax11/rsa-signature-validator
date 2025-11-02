@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSA Signature Validator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>RSA Digital Signature System</h1>
+            <p>Generation, verification and tampering detection</p>
+        </header>
+
+        <div class="modules">
+            <div class="module">
+                <h2>Sender Module</h2>
+                <div class="card">
+                    <h3>Generate Keys</h3>
+                    <button id="btnGenerarClaves" class="btn btn-primary">Generate RSA Keys</button>
+                    <div id="resultClaves" class="result"></div>
+                </div>
+
+                <div class="card">
+                    <h3>Sign Message</h3>
+                    <textarea id="mensajeRemitente" placeholder="Enter message to sign" rows="3"></textarea>
+                    <button id="btnFirmarMensaje" class="btn btn-primary">Sign Message</button>
+                    <div id="resultFirma" class="result"></div>
+                </div>
+            </div>
+
+            <div class="module">
+                <h2>Receiver Module</h2>
+                <div class="card">
+                    <h3>Verify Signature</h3>
+                    <button id="btnVerificar" class="btn btn-secondary">Verify Message</button>
+                    <div id="resultVerificar" class="result"></div>
+                </div>
+            </div>
+
+            <div class="module">
+                <h2>Tampering Detection Module</h2>
+                <div class="card">
+                    <h3>Test Message Alteration</h3>
+                    <textarea id="mensajeAlterado" placeholder="Enter altered message" rows="3"></textarea>
+                    <button id="btnVerificarAlterado" class="btn btn-warning">Verify Altered Message</button>
+                    <div id="resultAlterado" class="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
