@@ -1,21 +1,18 @@
 @echo off
-echo Iniciando RSA Signature Validator...
-echo.
+rem Inicia el backend (API) en segundo plano, sin ventana
+start "" /B cmd /c "cd backend && python server.py"
 
-start cmd /k "cd backend && python server.py"
-
+rem Pequeña pausa para que el backend inicie
 timeout /t 2 /nobreak > nul
 
-start cmd /k "cd frontend && python -m http.server 8000"
+rem Inicia el frontend (servidor web) en segundo plano, sin ventana
+start "" /B cmd /c "cd frontend && python -m http.server 8000"
 
+rem Pequeña pausa para que el frontend inicie
 timeout /t 2 /nobreak > nul
 
+rem Abre el navegador apuntando SOLAMENTE al frontend
 start http://localhost:8000
 
-echo.
-echo Aplicacion iniciada!
-echo Backend: http://localhost:5000
-echo Frontend: http://localhost:8000
-echo.
-echo Presiona cualquier tecla para cerrar esta ventana...
+rem Mantiene esta ventana abierta para poder cerrarla al final
 pause > nul

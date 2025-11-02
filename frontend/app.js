@@ -10,7 +10,7 @@ async function generarClaves() {
     const result = document.getElementById('resultClaves');
     
     btn.disabled = true;
-    btn.textContent = 'Generating...';
+    btn.textContent = 'Generando...';
     
     try {
         const response = await fetch(`${API_URL}/generar-claves`, {
@@ -23,8 +23,8 @@ async function generarClaves() {
             result.className = 'result show success';
             result.innerHTML = `
                 <strong>${data.message}</strong>
-                <pre>Public Key:\n${data.public_key.substring(0, 100)}...</pre>
-                <pre>Private Key:\n${data.private_key.substring(0, 100)}...</pre>
+                <pre>Clave Pública:\n${data.public_key.substring(0, 100)}...</pre>
+                <pre>Clave Privada:\n${data.private_key.substring(0, 100)}...</pre>
             `;
         } else {
             throw new Error(data.message);
@@ -34,7 +34,7 @@ async function generarClaves() {
         result.innerHTML = `<strong>Error:</strong> ${error.message}`;
     } finally {
         btn.disabled = false;
-        btn.textContent = 'Generate RSA Keys';
+        btn.textContent = 'Generar Claves RSA';
     }
 }
 
@@ -45,12 +45,12 @@ async function firmarMensaje() {
     
     if (!mensaje.trim()) {
         result.className = 'result show error';
-        result.innerHTML = '<strong>Error:</strong> Enter a message';
+        result.innerHTML = '<strong>Error:</strong> Ingresa un mensaje';
         return;
     }
     
     btn.disabled = true;
-    btn.textContent = 'Signing...';
+    btn.textContent = 'Firmando...';
     
     try {
         const response = await fetch(`${API_URL}/firmar-mensaje`, {
@@ -67,7 +67,7 @@ async function firmarMensaje() {
             result.className = 'result show success';
             result.innerHTML = `
                 <strong>${data.message}</strong>
-                <pre>Signature: ${data.firma.substring(0, 80)}...</pre>
+                <pre>Firma: ${data.firma.substring(0, 80)}...</pre>
             `;
         } else {
             throw new Error(data.message);
@@ -77,7 +77,7 @@ async function firmarMensaje() {
         result.innerHTML = `<strong>Error:</strong> ${error.message}`;
     } finally {
         btn.disabled = false;
-        btn.textContent = 'Sign Message';
+        btn.textContent = 'Firmar Mensaje';
     }
 }
 
@@ -86,7 +86,7 @@ async function verificarMensaje() {
     const result = document.getElementById('resultVerificar');
     
     btn.disabled = true;
-    btn.textContent = 'Verifying...';
+    btn.textContent = 'Verificando...';
     
     try {
         const response = await fetch(`${API_URL}/verificar-mensaje`, {
@@ -99,7 +99,7 @@ async function verificarMensaje() {
             result.className = `result show ${data.valida ? 'success' : 'error'}`;
             result.innerHTML = `
                 <strong>${data.message}</strong>
-                <pre>Message: ${data.mensaje}</pre>
+                <pre>Mensaje: ${data.mensaje}</pre>
             `;
         } else {
             throw new Error(data.message);
@@ -109,7 +109,7 @@ async function verificarMensaje() {
         result.innerHTML = `<strong>Error:</strong> ${error.message}`;
     } finally {
         btn.disabled = false;
-        btn.textContent = 'Verify Message';
+        btn.textContent = 'Verificar Mensaje';
     }
 }
 
@@ -120,12 +120,12 @@ async function verificarAlterado() {
     
     if (!mensajeAlterado.trim()) {
         result.className = 'result show error';
-        result.innerHTML = '<strong>Error:</strong> Enter an altered message';
+        result.innerHTML = '<strong>Error:</strong> Ingresa un mensaje alterado';
         return;
     }
     
     btn.disabled = true;
-    btn.textContent = 'Verifying...';
+    btn.textContent = 'Verificando...';
     
     try {
         const response = await fetch(`${API_URL}/verificar-alterado`, {
@@ -141,16 +141,16 @@ async function verificarAlterado() {
         if (data.success) {
             result.className = 'result show info';
             result.innerHTML = `
-                <strong>Verification Results:</strong>
+                <strong>Resultados de la Verificación:</strong>
                 <div style="margin-top: 10px;">
-                    <strong style="color: ${data.original.valida ? '#22543d' : '#742a2a'}">Original Message:</strong>
+                    <strong style="color: ${data.original.valida ? 'var(--success-text)' : 'var(--error-text)'}">Mensaje Original:</strong>
                     <pre>${data.original.estado}</pre>
-                    <pre>Message: ${data.original.mensaje}</pre>
+                    <pre>Mensaje: ${data.original.mensaje}</pre>
                 </div>
                 <div style="margin-top: 15px;">
-                    <strong style="color: ${data.alterado.valida ? '#22543d' : '#742a2a'}">Altered Message:</strong>
+                    <strong style="color: ${data.alterado.valida ? 'var(--success-text)' : 'var(--error-text)'}">Mensaje Alterado:</strong>
                     <pre>${data.alterado.estado}</pre>
-                    <pre>Message: ${data.alterado.mensaje}</pre>
+                    <pre>Mensaje: ${data.alterado.mensaje}</pre>
                 </div>
             `;
         } else {
@@ -161,6 +161,6 @@ async function verificarAlterado() {
         result.innerHTML = `<strong>Error:</strong> ${error.message}`;
     } finally {
         btn.disabled = false;
-        btn.textContent = 'Verify Altered Message';
+        btn.textContent = 'Verificar Mensaje Alterado';
     }
 }

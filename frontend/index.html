@@ -3,48 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSA Signature Validator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Validador de Firmas RSA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>RSA Digital Signature System</h1>
-            <p>Generation, verification and tampering detection</p>
+            <h1><span class="shield-icon">🛡️</span> Sistema de Firma Digital RSA</h1>
+            <p>Generación, verificación y detección de alteración</p>
         </header>
 
         <div class="modules">
             <div class="module">
-                <h2>Sender Module</h2>
+                <h2>Módulo Remitente</h2>
                 <div class="card">
-                    <h3>Generate Keys</h3>
-                    <button id="btnGenerarClaves" class="btn btn-primary">Generate RSA Keys</button>
+                    <h3>Generar Claves</h3>
+                    <button id="btnGenerarClaves" class="btn btn-primary">Generar Claves RSA</button>
                     <div id="resultClaves" class="result"></div>
                 </div>
 
                 <div class="card">
-                    <h3>Sign Message</h3>
-                    <textarea id="mensajeRemitente" placeholder="Enter message to sign" rows="3"></textarea>
-                    <button id="btnFirmarMensaje" class="btn btn-primary">Sign Message</button>
+                    <h3>Firmar Mensaje</h3>
+                    <textarea id="mensajeRemitente" placeholder="Ingresa el mensaje a firmar" rows="3"></textarea>
+                    <button id="btnFirmarMensaje" class="btn btn-primary">Firmar Mensaje</button>
                     <div id="resultFirma" class="result"></div>
                 </div>
             </div>
 
             <div class="module">
-                <h2>Receiver Module</h2>
+                <h2>Módulo Receptor</h2>
                 <div class="card">
-                    <h3>Verify Signature</h3>
-                    <button id="btnVerificar" class="btn btn-secondary">Verify Message</button>
+                    <h3>Verificar Firma</h3>
+                    <button id="btnVerificar" class="btn btn-secondary">Verificar Mensaje</button>
                     <div id="resultVerificar" class="result"></div>
                 </div>
             </div>
 
             <div class="module">
-                <h2>Tampering Detection Module</h2>
+                <h2>Módulo de Detección de Alteración</h2>
                 <div class="card">
-                    <h3>Test Message Alteration</h3>
-                    <textarea id="mensajeAlterado" placeholder="Enter altered message" rows="3"></textarea>
-                    <button id="btnVerificarAlterado" class="btn btn-warning">Verify Altered Message</button>
+                    <h3>Probar Alteración de Mensaje</h3>
+                    <textarea id="mensajeAlterado" placeholder="Ingresa el mensaje alterado" rows="3"></textarea>
+                    <button id="btnVerificarAlterado" class="btn btn-warning">Verificar Mensaje Alterado</button>
                     <div id="resultAlterado" class="result"></div>
                 </div>
             </div>
